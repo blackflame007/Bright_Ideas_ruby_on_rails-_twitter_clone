@@ -1,0 +1,26 @@
+<div class="container">
+        <a href="<%= ideas_index_path %>">Bright Ideas</a> <a href="/logout">Logout</a>
+        <p>
+            <a href=""><%= User.find(@idea.user_id).name %></a> Says:
+            <div class="border">
+                <p><%= @idea.idea %></p>
+            </div>
+        </p>
+        <h4>People who liked this post:</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th>Alias</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+                <%  @idea.users.each do |u| %>
+                <tr>
+                    <td><%= u.alias %></td>
+                    <td><%= u.name %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+</div>

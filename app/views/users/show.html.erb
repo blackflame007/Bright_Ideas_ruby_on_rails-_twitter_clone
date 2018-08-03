@@ -1,0 +1,11 @@
+<div class="container">
+    <a href="<%= ideas_index_path %>">Bright Ideas</a> <a href="/logout">Logout</a>
+    <p>Name: <%= User.find(@user.id).name %></p>
+    <p>Alias: <%= User.find(@user.id).alias %></p>
+    <p>Email: <%= User.find(@user.id).email %></p>
+
+    <hr>
+
+    <p>Total Number of Post: <%= @ideas.count %></p>
+    <p>Total Number of Likes: </p>
+</div>

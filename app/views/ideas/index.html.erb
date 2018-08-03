@@ -1,0 +1,21 @@
+<div class="container">
+    <a href="/logout">Logout</a>
+    <h3>Hi <%= User.find(session[:user_id]).name %>!</h3>
+    
+    <br>
+    <br>
+    <form action="/ideas" method="post">
+    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+    <textarea placeholder="Post Something witty" name="idea[idea]" cols="50" rows="5"></textarea>
+    <input type="hidden" name="idea[user_id]" value="<%= session[:user_id] %>">
+    <input type="submit" value="Idea!" class="btn btn-primary">
+    </form>
+
+    <% @ideas.each do |i| %>
+    <div>
+        <p><a href="/users/<%= User.find(i.user_id).id %>"><%= User.find(i.user_id).name %></a> says:</p>
+        <p class="border border-dark"><%= i.idea %></p>
+        <p><a href="">Like</a> <a href="<%= idea_path(i.id) %>">number of people</a></p>
+    </div>
+    <% end %>
+</div>
